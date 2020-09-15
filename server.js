@@ -3,9 +3,10 @@ const express = require('express')
 const morgan = require('morgan')
 const POKEDEX = require('./pokedex.json')
 const app = express()
+const cors = require('cors')
 
 app.use(morgan('dev'))
-
+app.use(cors())
 app.use(function validateBearerToken(req,res, next) {
    const authToken = req.get('Authorization')
     const apiToken = process.env.API_TOKEN
